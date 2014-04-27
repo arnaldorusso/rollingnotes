@@ -4,3 +4,5 @@
 from rolling-notes import extractly
 
 notes = extractly('teste_pausas.ly')
+
+print(notes)

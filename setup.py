@@ -18,18 +18,18 @@ readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
-    name='rolling-notes',
+    name='rollingnotes',
     version='0.1.0',
     description='Transcript lilypond files or midi to the 15 notes sheet paper of music box.',
     long_description=readme + '\n\n' + history,
     author='Arnaldo Russo',
     author_email='arnaldorusso@gmail.com',
-    url='https://github.com/arnaldorusso/rolling-notes',
+    url='https://github.com/arnaldorusso/rollingnotes',
     packages=[
-        'rolling-notes',
+        'rollingnotes',
     ],
-    package_dir={'rolling-notes':
-                 'rolling-notes'},
+    package_dir={'rollingnotes':
+                 'rollingnotes'},
     include_package_data=True,
     install_requires=[
     ],

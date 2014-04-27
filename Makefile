@@ -25,7 +25,7 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 lint:
-	flake8 rolling-notes tests
+	flake8 rollingnotes tests
 
 test:
 	python setup.py test
@@ -34,15 +34,15 @@ test-all:
 	tox
 
 coverage:
-	coverage run --source rolling-notes setup.py test
+	coverage run --source rollingnotes setup.py test
 	coverage report -m
 	coverage html
 	open htmlcov/index.html
 
 docs:
-	rm -f docs/rolling-notes.rst
+	rm -f docs/rollingnotes.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ rolling-notes
+	sphinx-apidoc -o docs/ rollingnotes
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	open docs/_build/html/index.html

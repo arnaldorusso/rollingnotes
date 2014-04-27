@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import re
 
 def extractly(filename):
     """
@@ -15,7 +16,7 @@ def extractly(filename):
     f = open(filename)
     vector = f.readlines()
     f.close()
-    pattern = ""
+    pattern = "" # define pattern for line beginning with \something 
     compass = []
     mus = {}
     notes = []
@@ -27,7 +28,7 @@ def extractly(filename):
         if not line:
             pass
         if '|' in line: # breaking compass
-            if re.match('pattern'):
+            if re.match(pattern, line):
                 notes.append(line)
             else:
                 notes.append(line)

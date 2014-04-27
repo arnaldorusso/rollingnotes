@@ -3,6 +3,6 @@
 
 from rollingnotes.rollingnotes import extractly
 
-notes = extractly('teste_pausas.ly')
+notes = extractly('tests/teste_pausas.ly')
 
 print(notes)

@@ -7,7 +7,7 @@
 import svgutils.transform as st
 import svgwrite
 
-def merge(model, mus):
+def mergesvg(model, mus):
     """
     model: svg file, containing Music Box paper sheet
     mus: extracted from Lilypond

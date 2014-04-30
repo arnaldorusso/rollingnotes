@@ -46,3 +46,8 @@ def transpoly(mus):
     commands is present.
     """
     
+def ly2xml():
+    """
+    more reading on:
+    https://github.com/wbsoft/frescobaldi/tree/master/frescobaldi_app/ly/musicxml
+    """

@@ -26,13 +26,16 @@ def extractly(filename):
         line = line[:-1].strip()
         if '\\relative' in line:
             mus['relative'] = line
+        if '\\time' in line:
+            mus['time'] = line
         if not line:
             pass
         if '|' in line: # breaking compass
             change = re.match(pattern, line)
             if change:    
                 if change.group() == '\\time':
-                    # This removes time marks (3/4, 4/4, etc)
+                    mus['time'] = line[6:9]
+                    # This removes 'tempo' marks (3/4, 4/4, etc)
                     notes.append(re.sub(pattern, blank, line)[5:])
                 else:
                     notes.append(re.sub(pattern, blank, line))

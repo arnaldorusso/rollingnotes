@@ -54,6 +54,9 @@ def transpoly(mus):
     It will only work for simpler lilypond files, where no fancy
     commands is present.
     """
+    music = mus['music']
+    for line in music:
+        
     
 def ly2xml():
     """

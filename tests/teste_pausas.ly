@@ -34,8 +34,7 @@ APnovoiceAA = \relative c'{
     %staffkeysig
     \key c \major 
     %bartimesig: 
-    \time 4/4 
-    R1  | % 
+    \time 4/4 R1  | % 
     r4 r r2      | % 2
     r8 r r r r r r r      | % 3
     c4 d e f      | % 4

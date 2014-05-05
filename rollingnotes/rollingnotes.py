@@ -28,8 +28,9 @@ def extractly(filename):
         if not line:
             pass
         if '|' in line: # breaking compass
-            if re.match(pattern, line):
-                notes.append(line)
+            init = re.match(pattern, line)
+            if init:
+                notes.append(init.groups())
             else:
                 notes.append(line)
             

@@ -16,7 +16,8 @@ def extractly(filename):
     f = open(filename)
     vector = f.readlines()
     f.close()
-    pattern = "" # define pattern for line beginning with \something 
+    pattern = re.compile(r"^\\[^\s]*", re.MULTILINE)
+    blank = ""
     compass = []
     mus = {}
     notes = []
@@ -28,9 +29,13 @@ def extractly(filename):
         if not line:
             pass
         if '|' in line: # breaking compass
-            init = re.match(pattern, line)
-            if init:
-                notes.append(init.groups())
+            change = re.match(pattern, line)
+            if change:    
+                if change.group() == '\\time':
+                    # This removes time marks (3/4, 4/4, etc)
+                    notes.append(re.sub(pattern, blank, line)[5:])
+                else:
+                    notes.append(re.sub(pattern, blank, line))
             else:
                 notes.append(line)
             

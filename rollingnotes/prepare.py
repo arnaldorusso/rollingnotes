@@ -54,14 +54,66 @@ def transpoly(mus):
     It will only work for simpler lilypond files, where no fancy
     commands is present.
     """
+    start_compass = 5 # initial distance of sheet in cm
+    inc_compass = 10 # size of each compass in cm
+    inc_notes = 2
+    start_y = 20
+    pos_y = {"c": start_y,
+            "d": start_y+2,
+            "e": start_y+4,
+            "f": start_y+6,
+            "g": start_y+8,
+            "a": start_y+10,
+            "b": start_y+12,
+            "c'": start_y+14,
+            "d'": start_y+16,
+            "e'": start_y+18,
+            "f'": start_y+20,
+            "g'": start_y+22,
+            "a'": start_y+24,
+            "b'": start_y+26,
+            "c''": start_y+28}
     pattern = re.compile(r".+?(?=\|)")
     music = mus['music']
     relative = mus['relative'][-4:-1]
     tempo = mus['time']
+    tt = []
+    new_music = []
     for compass in music:
-        notes = re.match(pattern, line[0])
-        for note in notes:
-             
+        text = re.match(pattern, compass[0])
+        compass_notes = (text.group()).split()
+        for notes in compass_notes:
+            notes = notes.split()
+            for note in notes:
+                # insert statements for parsing notes and rests
+                if note[1]:
+                    tt.append(int(note[1]))
+                elif tt[0] == int(tempo[-1])*4: # fusa
+                    add = inc_notes/4
+                elif tt[0] == int(tempo[-1])*2  # colcheia
+                    add = inc_notes/2
+                elif tt[0] == int(tempo[-1])    # seminima
+                    add = inc_notes
+                elif tt[0] == int(tempo[-1])/2  # minima
+                    add = inc_notes*2
+                elif tt[0] == int(tempo[-1])/4  # breve
+                    add = inc_notes*4    
+                    if note[0] == "r" | "R"
+                        inc_notes += (add+2)
+                        pass
+                    else:
+                        for k in pos_y.iterkeys():
+                            if k == note[0]:
+                                y_pos = pos_y[k]
+                                new_music.append((start_x, y_pos))
+                else:
+                    
+                tt = []
+                
+        start_x += inc_x
+                
+                
+    return new_music
     
 def ly2xml():
     """

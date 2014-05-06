@@ -89,19 +89,19 @@ def transpoly(mus):
             for note in notes:
                 print(note)
                 try:
-                    tt.append(int(note[1]))
-                    if tt[0] == int(tempo[-1])*4:  # fusa
-                        add.append(inc_notes/4)
-                    if tt[0] == int(tempo[-1])*2:  # colcheia
-                        add.append(inc_notes/2)
-                    if tt[0] == int(tempo[-1]):    # seminima
-                        add.append(inc_notes)
-                    if tt[0] == int(tempo[-1])/2:  # minima
-                        add.append(inc_notes*2)
-                    if tt[0] == int(tempo[-1])/4:  # breve
-                        add.append(inc_notes*4)
+                    tt.append(int(note[-1]))
                 except:
                     pass
+                if tt[0] == int(tempo[-1])*4:  # fusa
+                    add.append(inc_notes/4)
+                if tt[0] == int(tempo[-1])*2:  # colcheia
+                    add.append(inc_notes/2)
+                if tt[0] == int(tempo[-1]):    # seminima
+                    add.append(inc_notes)
+                if tt[0] == int(tempo[-1])/2:  # minima
+                    add.append(inc_notes*2)
+                if tt[0] == int(tempo[-1])/4:  # breve
+                    add.append(inc_notes*4)
 
                 if note[0] == "r" or "R":
                     inc_notes += add[0]

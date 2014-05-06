@@ -29,7 +29,7 @@
     c4 d e f      | % 4
     g a b c      | % 5
     d e f g      | % 6
-    a b c <c,, c' c'> \bar "|."     | % 7
+    a b c <c,, c' c'>     | % 7
     c'4 c c8 c c16 c c'8 \bar "|." 
     }% end of last bar in partorvoice
     >>

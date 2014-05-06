@@ -54,9 +54,14 @@ def transpoly(mus):
     It will only work for simpler lilypond files, where no fancy
     commands is present.
     """
+    pattern = re.compile(r".+?(?=\|)")
     music = mus['music']
-    for line in music:
-        
+    relative = mus['relative'][-4:-1]
+    tempo = mus['time']
+    for compass in music:
+        notes = re.match(pattern, line[0])
+        for note in notes:
+             
     
 def ly2xml():
     """

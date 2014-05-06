@@ -16,7 +16,7 @@ def extractly(filename):
     f = open(filename)
     vector = f.readlines()
     f.close()
-    pattern = re.compile(r"^\\[^\s]*", re.MULTILINE)
+    pattern = re.compile(r"^\\[^\s]*")
     blank = ""
     compass = []
     mus = {}
@@ -78,40 +78,45 @@ def transpoly(mus):
     relative = mus['relative'][-4:-1]
     tempo = mus['time']
     tt = []
+    add = []
     new_music = []
+    import ipdb; ipdb.set_trace()
     for compass in music:
         text = re.match(pattern, compass[0])
         compass_notes = (text.group()).split()
         for notes in compass_notes:
             notes = notes.split()
             for note in notes:
-                # insert statements for parsing notes and rests
-                if note[1]:
+                print(note)
+                try:
                     tt.append(int(note[1]))
-                elif tt[0] == int(tempo[-1])*4: # fusa
-                    add = inc_notes/4
-                elif tt[0] == int(tempo[-1])*2  # colcheia
-                    add = inc_notes/2
-                elif tt[0] == int(tempo[-1])    # seminima
-                    add = inc_notes
-                elif tt[0] == int(tempo[-1])/2  # minima
-                    add = inc_notes*2
-                elif tt[0] == int(tempo[-1])/4  # breve
-                    add = inc_notes*4    
-                    if note[0] == "r" | "R"
-                        inc_notes += (add+2)
-                        pass
-                    else:
-                        for k in pos_y.iterkeys():
-                            if k == note[0]:
-                                y_pos = pos_y[k]
-                                new_music.append((start_x, y_pos))
+                    if tt[0] == int(tempo[-1])*4:  # fusa
+                        add.append(inc_notes/4)
+                    if tt[0] == int(tempo[-1])*2:  # colcheia
+                        add.append(inc_notes/2)
+                    if tt[0] == int(tempo[-1]):    # seminima
+                        add.append(inc_notes)
+                    if tt[0] == int(tempo[-1])/2:  # minima
+                        add.append(inc_notes*2)
+                    if tt[0] == int(tempo[-1])/4:  # breve
+                        add.append(inc_notes*4)
+                except:
+                    pass
+
+                if note[0] == "r" or "R":
+                    inc_notes += add[0]
+                    pass
                 else:
-                    
-                tt = []
+                    for k in pos_y.iterkeys():
+                        if k == note[0]:
+                            y_pos = pos_y[k]
+                            new_music.append((start_compass, y_pos))
                 
-        start_x += inc_x
-                
+                start_compass += add[0]
+            add = []
+            tt = []
+            start_compass = 5
+        start_compass += inc_compass
                 
     return new_music
     

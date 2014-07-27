@@ -80,7 +80,7 @@ def transpoly(mus):
     tt = []
     add = []
     new_music = []
-    import ipdb; ipdb.set_trace()
+#    import ipdb; ipdb.set_trace()
     for compass in music:
         text = re.match(pattern, compass[0])
         compass_notes = (text.group()).split()

@@ -92,6 +92,7 @@ def _tempo(compass_notes):
         for note in notes:
             # print note
             # TODO parse note letter and zip with values
+            #   Those lines are working, but something wrong with names.
             # if len(note) == 1:
             #     if note[0].lower() in notes_names:
             #         names.append(notes_names.index(note[0].lower()))

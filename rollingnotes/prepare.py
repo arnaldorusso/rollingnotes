@@ -85,16 +85,27 @@ def parse_compass(mus):
 def _tempo(compass_notes):
     tt = {}
     fill_value = 1
-    for i, j in enumerate(compass_notes):
+    # notes_names = ['r', 'c', 'd', 'e', 'f', 'g', 'a', 'b']
+    for i, notes in enumerate(compass_notes):
         tt[i] = []
-        for note in j:
-            print note
+        names = []
+        for note in notes:
+            # print note
             # TODO parse note letter and zip with values
+            # if len(note) == 1:
+            #     if note[0].lower() in notes_names:
+            #         names.append(notes_names.index(note[0].lower()))
+            # else:
+            #     for i in note:
+            #         names.append(notes_names.index(note[0].lower()))
+
             cc = "".join([c for c in note if c.isdigit()])
             if cc:
                 fill_value = int(cc)
-            tt[i].append(fill_value)
 
+            tt[i].append((names, fill_value))
+
+        names = []
     return tt
 
 

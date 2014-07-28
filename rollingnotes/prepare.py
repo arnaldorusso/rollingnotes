@@ -81,24 +81,38 @@ def parse_compass(mus):
 
     return compass_notes
 
-# def _tempo(val):
-#     if val
+
+def _tempo(compass_notes):
+    tt = {}
+    fill_value = 1
+    for i, j in enumerate(compass_notes):
+        tt[i] = []
+        for note in j:
+            print note
+            # TODO parse note letter and zip with values
+            cc = "".join([c for c in note if c.isdigit()])
+            if cc:
+                fill_value = int(cc)
+            tt[i].append(fill_value)
+
+    return tt
 
 
-def transpoly(compass_notes):
+def transpoly(tt, mus):
     """
     It will only work for simpler lilypond files, where no fancy
     commands is present.
     """
-    tt = {}
-
-    for i, compass in enumerate(compass_notes):
-        for note in compass:
-            try:
-                tt[i] = (int(note[-1]))
-            except:
-                pass
-
+    zips = {}
+    for key in sorted(tt.keys()):
+        zips[key] = []
+        temp = key[0]
+        for val in key:
+            while val + temp == 0:
+                zips[key].append(zip)
+#            if tt[key][0][0] == 0:
+#               zips
+#
 #                if tt[i].append == int(tempo[-1])*4:  # fusa
 #                        add.append(inc_notes/4)
 #                    if tt[i] == int(tempo[-1])*2:  # colcheia
@@ -141,7 +155,7 @@ def transpoly(compass_notes):
     #        "b'": start_y+26,
     #        "c''": start_y+28}
 
-    # return new_music
+#    return tt
 
 
 def ly2xml():

@@ -28,14 +28,3 @@ words = \lyricmode {
   
   
 }
-
-\score {
-  <<
-    \new ChordNames \chordNames
-    \new FretBoards \chordNames
-    \new Staff { \melody }
-    \addlyrics { \words }
-  >>
-  \layout { }
-  \midi { }
-}
